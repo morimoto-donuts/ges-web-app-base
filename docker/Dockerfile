@@ -1,5 +1,5 @@
 FROM debian:8.2
-COPY requirements.* /home/debian/app
+COPY requirements.* /home/debian/app/
 WORKDIR /home/debian/app
 RUN apt-get update && apt-get install -y sudo python3 python3-pip && \
   useradd -m debian && \
