@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y sudo python3 python3-pip && \
   gpasswd -a debian sudo && \
   pip3 install -r requirements.txt
 USER debian
-ONBUILD COPY . /home/debian/app/src
+ONBUILD COPY * /home/debian/app/src
 ONBUILD WORKDIR /home/debian/app/src
 ONBUILD EXPOSE 8888
 ONBUILD ENTRYPOINT python3 main.py
