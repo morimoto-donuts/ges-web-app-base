@@ -1,7 +1,10 @@
 FROM debian:8.2
 COPY requirements.* /home/debian/app/
 WORKDIR /home/debian/app
-RUN apt-get update && apt-get install -y sudo python3 python3-pip && \
+RUN apt-get update && apt-get install -y sudo python3 wget && \
+  wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py && \
+  python3 get-pip.py && \
+  rm get-pip.py && \
   useradd -m debian && \
   echo debian:password | chpasswd && \
   gpasswd -a debian sudo && \
