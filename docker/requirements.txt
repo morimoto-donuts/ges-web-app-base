@@ -6,6 +6,5 @@ requests==2.8.1
 simplejson==3.8.0
 six==1.10.0
 SQLAlchemy==1.0.8
-sqlalchemy-validation==0.3.0a0
 tornado==4.2.1
 validate-email==1.3
