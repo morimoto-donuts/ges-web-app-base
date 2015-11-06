@@ -1,6 +1,4 @@
 FROM debian:8.2
-COPY requirements.* /home/debian/app/
-WORKDIR /home/debian/app
 RUN apt-get update && apt-get install -y sudo python3 wget && \
   wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py && \
   python3 get-pip.py && \
@@ -8,7 +6,11 @@ RUN apt-get update && apt-get install -y sudo python3 wget && \
   useradd -m debian && \
   echo debian:password | chpasswd && \
   gpasswd -a debian sudo && \
-  pip3 install -r requirements.txt
+USER debian
+WORKDIR /home/debian/app
+COPY requirements.* /home/debian/app/
+USER root
+RUN pip3 install -r requirements.txt
 USER debian
 ONBUILD COPY . /home/debian/app/src/
 ONBUILD WORKDIR /home/debian/app/src
