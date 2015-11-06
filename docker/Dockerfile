@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y sudo python3 wget && \
   rm get-pip.py && \
   useradd -m debian && \
   echo debian:password | chpasswd && \
-  gpasswd -a debian sudo && \
+  gpasswd -a debian sudo
 USER debian
 WORKDIR /home/debian/app
 COPY requirements.* /home/debian/app/
